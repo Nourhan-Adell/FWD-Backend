@@ -27,8 +27,15 @@ In this project I have made a small API that resize image.
     .
     ├── images
     |     └──thumb
-    ├── test                    # Test files (alternatively `spec` or `tests`)
-    │   ├── benchmarks          # Load and stress tests
-    │   ├── integration         # End-to-end, integration tests (alternatively `e2e`)
-    │   └── unit                # Unit tests
+    ├── spec
+    |     └──support
+    |           └──jasmine.json
+    |
+    ├── src                    
+    │   ├── controller  
+    |           ├──images.ts
+    |           └── main.ts
+    │   ├── routes
+    |   ├── services
+    │   └── validations            
     └── ...
