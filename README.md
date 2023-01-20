@@ -24,42 +24,11 @@ In this project I have made a small API that resize image.
 
 ### 4. Project structure:
 
-├───.vscode
-
-Main & resized Images' folders
-├───images
-│ └───thumbs
-
-Jasmin configuration
-├───spec
-│ └───support
-| | └─── jasmine.json
-
-here are all the TS files, app.ts is the start of the project has the listen functions
-└───src
-
-    modules has the utilities, modules is more diverse of a name so I used it.
-    here you'll find the images.ts file has the middleware and the resize function
-    ├───modules
-
-    here is the routing system that starts with index.ts. the in the api folder there is the getImage which has all the magic in it
-    ├───routes
-    │   └───api
-
-    here are all jasmine based tests
-    └───tests
-        ├───helpers
-        ├───modules
-        └───routes
-            └───api
-
-all the js files
-├───build
-│ ├───modules
-│ ├───routes
-│ │ └───api
-│ └───tests
-│ ├───helpers
-│ ├───modules
-│ └───routes
-│ └───api
+    .
+    ├── images
+    |     └──thumb
+    ├── test                    # Test files (alternatively `spec` or `tests`)
+    │   ├── benchmarks          # Load and stress tests
+    │   ├── integration         # End-to-end, integration tests (alternatively `e2e`)
+    │   └── unit                # Unit tests
+    └── ...
