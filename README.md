@@ -33,9 +33,21 @@ In this project I have made a small API that resize image.
     |
     ├── src                    
     │   ├── controller  
-    |           ├──images.ts
-    |           └── main.ts
+    |   |       ├──images.ts
+    |   |       └── main.ts
     │   ├── routes
+    |   |     └── index.ts
     |   ├── services
-    │   └── validations            
-    └── ...
+    |   |     └──image.ts
+    │   ├── validations 
+    |   |        └── images.ts
+    |   └──app.ts
+    ├── tests
+    |   ├── helpers
+    |   |     └── reporter.ts
+    |   └──indexSpec.ts
+    ├── .eslintrc
+    ├── .prettierrc
+    ├── package-lock.json
+    ├── package.json
+    └── tsconfig.json
