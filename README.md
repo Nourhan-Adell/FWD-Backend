@@ -13,8 +13,8 @@ In this project, I created a small API that resizes images.
   Simply open the main pages that instruct you to select an image name from the options (don't forget to include the desired width and height).
   
 - [Resizing page](http://localhost:700/images?filename=smileface&width=200&height=200):
-  In this page after entering the proper parameters the image with the desired size appears.
-  
+After entering the appropriate parameters, the image with the desired size appears on this page.
+
 ### 3.Dependencies script:
 - Build the ts file: ("build": "npx tsc")
 - Run Eslint: ("lint": "eslint \"src/**/*.js\"")
