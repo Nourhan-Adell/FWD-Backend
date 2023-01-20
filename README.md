@@ -24,8 +24,9 @@ In this project I have made a small API that resize image.
 
 ### 4. Project structure:
 ├── vscode
+
 ├── images
-     └── thumb
+|     └── thumb
      
 ├── spec
 │   └── support
