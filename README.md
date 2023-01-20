@@ -23,3 +23,29 @@ In this project I have made a small API that resize image.
 - Testing: ("test": "npm run build && npm run jasmine")
 
 ### 4. Project structure:
+├── vscode
+├── images
+│   └── thumb
+├── spec
+│   └── support
+|          └── jasmine.json
+│   
+├── src
+|     ├── controllers
+|            ├── images.ts
+|            └── main.ts
+|     ├── routes
+|           └── index.ts
+|     ├── services
+|           └── image.ts
+|     └── validations
+|            └── images.ts
+|     
+├── tests
+|     ├── helpers
+|     |     └── reporter.ts
+|     └──
+├──
+└── README.md
+
+3 directories, 7 files
