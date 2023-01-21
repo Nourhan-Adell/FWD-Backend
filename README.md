@@ -5,8 +5,8 @@ In this project, I created a small API that resizes images.
 
 ## Details:
 ### 1. Available routes/controllers:
-- (http://localhost:700)
-- (http://localhost:700/images?filename=smileface&width=200&height=200)
+- (http://localhost:7000)
+- (http://localhost:7000/images?filename=smileface&width=200&height=200)
 
 ### 2. Property of each rout:
 - [main page](http://localhost:700): 
