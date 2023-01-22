@@ -15,15 +15,14 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "jasmine": "^4.5.0",
-    "jimp": "^0.16.2",
-    "sharp": "^0.31.3"
+    "jimp": "^0.16.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
     "@types/jasmine": "^4.3.1",
     "@types/node": "^18.11.18",
     "eslint": "^8.32.0",
+    "jasmine": "^4.5.0",
     "jasmine-spec-reporter": "^7.0.0",
     "joi": "^17.7.0",
     "jshint": "^2.13.6",
