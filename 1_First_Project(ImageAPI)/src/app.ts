@@ -1,10 +1,12 @@
 import express from 'express';
+import { Request, Response, NextFunction } from 'express';
+
 const app = express();
-const port = 7000;
+const port: number = 7000;
 
 const routes = require('./routes');
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   console.log('Start working..');
   next();
 });
