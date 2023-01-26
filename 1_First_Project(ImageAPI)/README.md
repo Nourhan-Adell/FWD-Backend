@@ -9,16 +9,16 @@ In this project, I created a small API that resizes images.
 - (http://localhost:7000/images?name=smileface&width=200&height=200)
 
 ### 2. Property of each rout:
-- [main page](http://localhost:700): 
+- [main page](http://localhost:7000): 
   Simply open the main pages that instruct you to select an image name from the options (don't forget to include the desired width and height).
   
-- [Resizing page](http://localhost:700/images?filename=smileface&width=200&height=200):
+- [Resizing page](http://localhost:7000/images?filename=smileface&width=200&height=200):
 After entering the appropriate parameters, the image with the desired size appears on this page.
 
 ### 3.Dependencies script:
 - Build the ts file: ("build": "npx tsc")
-- Run Eslint: ("lint": "eslint \"src/**/*.js\"")
-- Run Prettier: ("prettier": "prettier --config .prettierrc \"src/**/*.js\" --write")
+- Run Eslint: ("lint": "eslint \"dist/**/*.js\"")
+- Run Prettier: ("prettier": "prettier --config .prettierrc \"dist/**/*.js\" --write")
 - Run the app: ("start": "nodemon src/app.ts" )
 - Testing: ("test": "npm run build && npm run jasmine")
 
