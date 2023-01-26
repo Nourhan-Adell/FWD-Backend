@@ -16,6 +16,6 @@ export const resize = async (mainImage: string, width: number, height: number, n
     const resized = await jimp.resize(width, height).quality(90).writeAsync(path.join('images/thumb', name));
     return resized;
   } catch (error: any) {
-    console.log(`somrthing went wrong! error: ${error.message}`);
+    console.log(`something went wrong! error: ${error.message}`);
   }
 };

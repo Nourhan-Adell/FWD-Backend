@@ -66,7 +66,7 @@ var resize = function (mainImage, width, height, name) { return __awaiter(void 0
                 return [2 /*return*/, resized];
             case 3:
                 error_1 = _a.sent();
-                console.log("somrthing went wrong! error: ".concat(error_1.message));
+                console.log("something went wrong! error: ".concat(error_1.message));
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
