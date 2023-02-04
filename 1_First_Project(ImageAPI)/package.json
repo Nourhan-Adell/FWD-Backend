@@ -4,8 +4,8 @@
   "main": "app.js",
   "scripts": {
     "build": "npx tsc",
-    "lint": "eslint \"dist/**/*.js\"",
-    "prettier": "prettier --config .prettierrc \"dist/**/*.js\" --write",
+    "lint": "eslint \"src/**/*.ts\"",
+    "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
     "start": "nodemon src/app.ts",
     "jasmine": "jasmine",
     "test": "npm run build && npm run jasmine"
@@ -21,6 +21,7 @@
     "@types/express": "^4.17.15",
     "@types/jasmine": "^4.3.1",
     "@types/node": "^18.11.18",
+    "babel-eslint": "^10.1.0",
     "eslint": "^8.32.0",
     "jasmine": "^4.5.0",
     "jasmine-spec-reporter": "^7.0.0",

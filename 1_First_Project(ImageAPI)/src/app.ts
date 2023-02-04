@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 const app = express();
 const port: number = 7000;
 
-const routes = require('./routes');
+import routes from './routes';
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   console.log('Start working..');

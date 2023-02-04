@@ -1,5 +1,5 @@
 import Jimp from 'jimp/es';
-import path = require('path');
+import path from 'path';
 
 /**
  * Resizing function that takes the image parameter and resize the main name for that image,

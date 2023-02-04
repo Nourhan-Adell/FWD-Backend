@@ -28,4 +28,4 @@ router.get('/', validateResize, async (req: Request, res: Response, next: NextFu
   res.sendFile(name, image_options);
 });
 
-module.exports = router;
+export default router;

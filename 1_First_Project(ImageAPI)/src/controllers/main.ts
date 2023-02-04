@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
   res.send(`<h2>Please write the name of selected image in the URL</h2> <p><h3>The selected options: SadFace, SmileFace, or ShyFace</h3></p>`);
 });
 
-module.exports = router;
+export default router;
