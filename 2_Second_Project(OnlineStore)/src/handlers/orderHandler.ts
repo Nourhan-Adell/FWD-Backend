@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Order, orderModel } from '../models/orderModel';
+import { orderModel } from '../models/orderModel';
 import { verifyAuthToken } from '../middleware/verification';
 const store = new orderModel();
 
@@ -30,8 +30,8 @@ const create = async (req: Request, res: Response) => {
       orderStatus: req.body.orderStatus,
       userID: parseInt(req.body.userID)
     };
-    const newProduct = await store.create(order);
-    res.json(order);
+    const neworder = await store.create(order);
+    res.json(neworder);
     res.status(200);
   } catch (error) {
     res.status(400);

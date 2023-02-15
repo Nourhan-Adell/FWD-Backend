@@ -1,9 +1,8 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import { Product, porductModel } from '../models/productModel';
 import { verifyAuthToken } from '../middleware/verification';
-import jwt from 'jsonwebtoken';
 
-const secret = process.env.TOKEN_SECRET as string;
+// const secret = process.env.TOKEN_SECRET as string;
 const store = new porductModel();
 
 const index = async (req: Request, res: Response) => {

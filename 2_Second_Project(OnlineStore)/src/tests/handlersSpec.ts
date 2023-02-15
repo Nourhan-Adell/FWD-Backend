@@ -1,11 +1,11 @@
 import request from 'supertest';
-import app, { use } from './server';
-import userRoutes from './userHandler';
-import productRoutes from './productHandler';
-import orderRoutes from './orderHandler';
-import { User, userModel } from './userModel';
-import { Product } from './productModel';
-import { Order } from './orderModel';
+import app from '../server';
+import userRoutes from '../handlers/userHandler';
+import productRoutes from '../handlers/productHandler';
+import orderRoutes from '../handlers/orderHandler';
+import { User } from '../models/userModel';
+import { Product } from '../models/productModel';
+import { Order } from '../models/orderModel';
 
 userRoutes(app);
 describe('Testing all handlers', () => {

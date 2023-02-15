@@ -35,7 +35,7 @@ const create = async (req: Request, res: Response) => {
   };
   try {
     const newUser = await store.create(user);
-    var token = jwt.sign({ id: newUser.id, firstName: newUser.firstName, secondName: newUser.secondName }, secret);
+    let token = jwt.sign({ id: newUser.id, firstName: newUser.firstName, secondName: newUser.secondName }, secret);
     res.status(200);
     res.json(token);
   } catch (err) {

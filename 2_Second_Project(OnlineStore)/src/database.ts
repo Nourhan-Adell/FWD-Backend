@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, NODE_ENV, POSTGRES_TEST_DB } = process.env;
+const { POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, NODE_ENV, POSTGRES_TEST_DB } = process.env;
 
 const databases: any = { dev: POSTGRES_DB, test: POSTGRES_TEST_DB };
 const pool = new Pool({
