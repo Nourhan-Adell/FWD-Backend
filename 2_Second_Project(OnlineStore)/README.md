@@ -15,8 +15,8 @@ In this project, I've created a RESTful API for online store.
   - Create new user [Create](http://localhost:7000/users) - (http://localhost:7000/users)
   
  ### 3. Orders:
-    - Return orders of certain user [ShowOrder](http://localhost:7000/orders/:userID) - (http://localhost:7000/orders/:userID)
-    - Return all the completed orders [ShowCompleteOrders](http://localhost:7000/orders/:orderStatus) - (http://localhost:7000/orders/:orderStatus)
+  - Return orders of certain user [ShowOrder](http://localhost:7000/orders/:userID) - (http://localhost:7000/orders/:userID)
+  - Return all the completed orders [ShowCompleteOrders](http://localhost:7000/orders/:orderStatus) - (http://localhost:7000/orders/:orderStatus)
     
  ### 3.Dependencies script:
 - Build the ts file: ("build": "npx tsc")
