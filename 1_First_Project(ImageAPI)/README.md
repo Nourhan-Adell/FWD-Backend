@@ -1,5 +1,4 @@
-# FWD-Backend
-
+# Image API
 ## About:
 In this project, I created a small API that resizes images.
 
