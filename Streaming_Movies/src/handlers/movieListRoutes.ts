@@ -1,13 +1,12 @@
 import express, { Request, Response } from "express";
-import { Movies, MovieModel } from "../models/movieModel";
+import { MovieList, MovieListModel } from "../models/movieListModel";
 
-// const secret = process.env.TOKEN_SECRET as string;
-const store = new MovieModel();
+const store = new MovieListModel();
 
 const index = async (req: Request, res: Response) => {
   try {
-    const movies = await store.index();
-    res.status(200).json(movies);
+    const movielist = await store.index();
+    res.status(200).json(movielist);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -15,21 +14,21 @@ const index = async (req: Request, res: Response) => {
 
 const show = async (req: Request, res: Response) => {
   try {
-    const movies = await store.show(parseInt(req.params.id));
-    res.status(200).json(movies);
+    const movielist = await store.show(parseInt(req.params.id));
+    res.status(200).json(movielist);
   } catch (err) {
     res.status(400).json(err);
   }
 };
 
 const create = async (req: Request, res: Response) => {
-  const movie: Movies = {
+  const movielist: MovieList = {
+    userListID: req.body.userListID,
+    movieID: req.body.movie,
     name: req.body.name,
-    releaseDate: req.body.releaseDate,
-    rate: req.body.rate,
   };
   try {
-    const movies = await store.create(movie);
+    const movies = await store.create(movielist);
     res.status(200).json(movies);
   } catch (err) {
     res.status(400).json(err);
@@ -46,25 +45,25 @@ const Delete = async (req: Request, res: Response) => {
 };
 
 const update = async (req: Request, res: Response) => {
-  const movie: Movies = {
+  const movielist: MovieList = {
+    userListID: req.body.userListID,
+    movieID: req.body.movie,
     name: req.body.name,
-    releaseDate: req.body.releaseDate,
-    rate: req.body.rate,
   };
   try {
-    const movies = await store.update(parseInt(req.params.id), movie);
+    const movies = await store.update(parseInt(req.params.id), movielist);
     res.status(200).json(movies);
   } catch (err) {
     res.status(200).json(err);
   }
 };
 
-const movieRoutes = (app: express.Application) => {
-  app.get("/movies", index);
-  app.post("/movies/", create);
-  app.get("movies/:id", show);
-  app.patch("movies/:id", update);
-  app.delete("movies/:id", Delete);
+const movieListRoutes = (app: express.Application) => {
+  app.get("/movielist", index);
+  app.post("/movielist/", create);
+  app.get("movielist/:id", show);
+  app.patch("movielist/:id", update);
+  app.delete("movielist/:id", Delete);
 };
 
-export default movieRoutes;
+export default movieListRoutes;

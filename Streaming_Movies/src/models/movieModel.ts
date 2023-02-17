@@ -5,6 +5,7 @@ export type Movies = {
   id?: number;
   name: string;
   releaseDate: Date;
+  rate?: number;
 };
 
 export type movieUpdate = {
@@ -16,7 +17,7 @@ export class MovieModel {
   async index(): Promise<Movies[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM movies`;
+      const query = `SELECT * FROM movies;`;
       const result = await conn.query(query);
       conn.release();
       return result.rows;
@@ -28,7 +29,7 @@ export class MovieModel {
   async show(id: number): Promise<Movies[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM movies where is = ($1)`;
+      const query = `SELECT * FROM movies where is = ($1);`;
       const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
@@ -40,7 +41,7 @@ export class MovieModel {
     try {
       const conn = await client.connect();
       const query = `INSERT INTO Movies (name, releaseDate) values ($1, $2)`;
-      const result = await conn.query(query);
+      const result = await conn.query(query, [m.name, m.releaseDate]);
       conn.release();
       return result.rows;
     } catch (err) {
@@ -51,7 +52,7 @@ export class MovieModel {
     try {
       const conn = await client.connect();
       const query = `DELETE FROM movies where id = ($1)`;
-      const result = await conn.query(query);
+      const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
     } catch (err) {
@@ -61,8 +62,9 @@ export class MovieModel {
   async update(id: number, m: movieUpdate): Promise<Movies[]> {
     try {
       const conn = await client.connect();
-      const query = `UPDATE TABLE Movies set name= COALESCE($2, name), releaseDate = COALESCE($3, releaseDate) where id = ${id} RETURNING *`;
-      const result = await conn.query(query);
+      // const query = `UPDATE TABLE Movies set name= COALESCE($2, name), releaseDate = COALESCE($3, releaseDate) where id = ${id} RETURNING *`;
+      const query = `UPDATE TABLE Movies set name= ($1), releaseDate = ($2) where id = ${id} RETURNING *;`;
+      const result = await conn.query(query, [m.name, m.releaseDate]);
       conn.release();
       return result.rows;
     } catch (err) {

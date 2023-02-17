@@ -3,20 +3,24 @@ import bcrypt from "bcrypt";
 
 export type User = {
   id?: number;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 };
 
 export type userUpdate = {
+  firstName: string | null;
+  lastName: string | null;
   email?: string | null;
   password?: string | null;
 };
 
-export class MovieModel {
+export class UserModel {
   async index(): Promise<User[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM users`;
+      const query = `SELECT * FROM users;`;
       const result = await conn.query(query);
       conn.release();
       return result.rows;
@@ -28,7 +32,7 @@ export class MovieModel {
   async show(id: number): Promise<User[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM users where is = ($1)`;
+      const query = `SELECT * FROM users where id = ($1);`;
       const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
@@ -40,8 +44,8 @@ export class MovieModel {
     try {
       const hashedPassword = await bcrypt.hash(u.password, 10);
       const conn = await client.connect();
-      const query = `INSERT INTO users (email, password) VALUES ('${u.email}', '${hashedPassword}')`;
-      await conn.query(query);
+      const query = `INSERT INTO users (firstName, lastName, email, password) VALUES ($1, $2, $3, $4) RETURNING *;`;
+      await conn.query(query, [u.firstName, u.lastName, u.email, hashedPassword]);
       conn.release();
     } catch (err) {
       throw new Error(`Cannot create user ${err}`);
@@ -51,22 +55,22 @@ export class MovieModel {
     try {
       const conn = await client.connect();
       const query = `DELETE FROM users where id = ($1)`;
-      const result = await conn.query(query);
+      const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
     } catch (err) {
       throw new Error(`Cannot delete user of id ${id} ${err}`);
     }
   }
-  async update(id: number, m: userUpdate): Promise<User[]> {
+  async update(id: number, u: userUpdate): Promise<User[]> {
     try {
       const conn = await client.connect();
-      const query = `UPDATE TABLE users set name= COALESCE($2, name), releaseDate = COALESCE($3, releaseDate) where id = ${id} RETURNING *`;
-      const result = await conn.query(query);
+      const query = `UPDATE TABLE users set firstName= ($1), lastName = ($2),  email = ($3), password = ($4) where id = ${id} RETURNING *;`;
+      const result = await conn.query(query, [u.firstName, u.lastName, u.email, u.password]);
       conn.release();
       return result.rows;
     } catch (err) {
-      throw new Error(`Cannot update movie of id ${id} ${err}`);
+      throw new Error(`Cannot update user of id ${id} ${err}`);
     }
   }
 }

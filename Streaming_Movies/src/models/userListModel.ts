@@ -1,22 +1,21 @@
 import client from "../database";
-import bcrypt from "bcrypt";
 
 export type UserList = {
   id?: number;
   userID: number;
-  name: string;
+  movieID: number;
 };
 
 export type userUpdate = {
   userID?: number | null;
-  name?: string | null;
+  movieID?: number | null;
 };
 
 export class userListModel {
   async index(): Promise<UserList[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM userList`;
+      const query = `SELECT * FROM userList;`;
       const result = await conn.query(query);
       conn.release();
       return result.rows;
@@ -28,7 +27,7 @@ export class userListModel {
   async show(id: number): Promise<UserList[]> {
     try {
       const conn = await client.connect();
-      const query = `SELECT * FROM userList where is = ($1)`;
+      const query = `SELECT * FROM userList where is = ($1);`;
       const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
@@ -39,8 +38,8 @@ export class userListModel {
   async create(ul: UserList): Promise<UserList[]> {
     try {
       const conn = await client.connect();
-      const query = `INSERT INTO userList (userID, name) values ($1, $2)`;
-      const result = await conn.query(query);
+      const query = `INSERT INTO userList (userID, movieID) values ($1, $2)`;
+      const result = await conn.query(query, [ul.userID, ul.movieID]);
       conn.release();
       return result.rows;
     } catch (err) {
@@ -51,18 +50,18 @@ export class userListModel {
     try {
       const conn = await client.connect();
       const query = `DELETE FROM userList where id = ($1)`;
-      const result = await conn.query(query);
+      const result = await conn.query(query, [id]);
       conn.release();
       return result.rows;
     } catch (err) {
       throw new Error(`Cannot delete userlist of id ${id} ${err}`);
     }
   }
-  async update(id: number, m: userUpdate): Promise<UserList[]> {
+  async update(id: number, u: userUpdate): Promise<UserList[]> {
     try {
       const conn = await client.connect();
-      const query = `UPDATE TABLE userlist set name= COALESCE($2, userID), releaseDate = COALESCE($3, name) where id = ${id} RETURNING *`;
-      const result = await conn.query(query);
+      const query = `UPDATE TABLE userlist set userID= ($1), movieID = ($2) where id = ${id} RETURNING *;`;
+      const result = await conn.query(query, [u.userID, u.movieID]);
       conn.release();
       return result.rows;
     } catch (err) {

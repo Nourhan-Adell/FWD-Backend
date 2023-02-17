@@ -1,29 +1,12 @@
 import { Pool } from "pg";
-import cfg from "./config";
+const { POSTGRES_HOST, POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, NODE_ENV, POSTGRES_TEST_DB } = process.env;
 
-console.log("password");
+const databases: any = { dev: POSTGRES_DB, test: POSTGRES_TEST_DB };
+const pool = new Pool({
+  host: POSTGRES_HOST,
+  database: NODE_ENV ? databases[NODE_ENV] : "dev",
+  user: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
+});
 
-const { host, database, user, password, port, test_database } = cfg.postgres;
-const { nodeEnv } = cfg;
-
-let pool = new Pool();
-
-if (nodeEnv === "test") {
-  pool = new Pool({
-    host: host,
-    database: database,
-    user: user,
-    password: password,
-  });
-}
-
-if (nodeEnv === "dev") {
-  pool = new Pool({
-    host: host,
-    database: test_database,
-    user: user,
-    password: password,
-  });
-}
-console.log(password);
 export default pool;

@@ -1,8 +1,8 @@
 import express, { Request, Response } from "express";
-import { User, UserModel } from "../models/userModel";
+import { UserList, userListModel } from "../models/userListModel";
 
 // const secret = process.env.TOKEN_SECRET as string;
-const store = new UserModel();
+const store = new userListModel();
 
 const index = async (req: Request, res: Response) => {
   try {
@@ -23,14 +23,12 @@ const show = async (req: Request, res: Response) => {
 };
 
 const create = async (req: Request, res: Response) => {
-  const user: User = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
+  const userlist: UserList = {
+    userID: req.body.userID,
+    movieID: req.body.movie,
   };
   try {
-    const users = await store.create(user);
+    const users = await store.create(userlist);
     res.status(200).json(users);
   } catch (err) {
     res.status(400).json(err);
@@ -47,26 +45,24 @@ const Delete = async (req: Request, res: Response) => {
 };
 
 const update = async (req: Request, res: Response) => {
-  const user: User = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
+  const userlist: UserList = {
+    userID: req.body.userID,
+    movieID: req.body.movie,
   };
   try {
-    const users = await store.update(parseInt(req.params.id), user);
+    const users = await store.update(parseInt(req.params.id), userlist);
     res.status(200).json(users);
   } catch (err) {
     res.status(200).json(err);
   }
 };
 
-const userRoutes = (app: express.Application) => {
-  app.get("/users", index);
-  app.post("/users/", create);
-  app.get("users/:id", show);
-  app.patch("users/:id", update);
-  app.delete("users/:id", Delete);
+const userListRoutes = (app: express.Application) => {
+  app.get("/userlist", index);
+  app.post("/userlist/", create);
+  app.get("userlist/:id", show);
+  app.patch("userlist/:id", update);
+  app.delete("userlist/:id", Delete);
 };
 
-export default userRoutes;
+export default userListRoutes;

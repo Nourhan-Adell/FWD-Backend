@@ -1,16 +1,17 @@
 {
+  "defaultENV": { "ENV": "NODE_ENV" },
   "dev": {
     "driver": "pg",
     "host": "localhost",
-    "database": "onlinestore",
+    "database": "moviestream",
     "user": "postgres",
-    "password": "123456789"
+    "password": "NourhanAdel"
   },
   "test": {
     "driver": "pg",
     "host": "localhost",
     "database": "postgres",
     "user": "postgres",
-    "password": "123456789"
+    "password": "NourhanAdel"
   }
 }
