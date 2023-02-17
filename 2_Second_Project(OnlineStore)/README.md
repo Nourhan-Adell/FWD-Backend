@@ -50,6 +50,7 @@ PORT: 7000 - [Main Page](http://localhost:7000)
 ## API Endpoints:
 
 ### 1. Products:
+<<<<<<< HEAD
 
 - Return all products [Index](http://localhost:7000/products) - (http://localhost:7000/products)
 - Return Product details [Show](http://localhost:7000/products/:id) - (http://localhost:7000/products/:id)
@@ -85,6 +86,22 @@ PORT: 7000 - [Main Page](http://localhost:7000)
 
 ## Dependencies script:
 
+=======
+  - Return all products [Index](http://localhost:7000/products) - (http://localhost:7000/products)
+  - Return Product details [Show](http://localhost:7000/products/:id) - (http://localhost:7000/products/:id)
+  - Create new product [Create](http://localhost:7000/products) - (http://localhost:7000/products)
+  
+ ### 2. Users:
+  - Return all users [Index](http://localhost:7000/users) - (http://localhost:7000/users) 
+  - Return user details [Show](http://localhost:7000/users/:id) - (http://localhost:7000/users/:id)
+  - Create new user [Create](http://localhost:7000/users) - (http://localhost:7000/users)
+  
+ ### 3. Orders:
+  - Return orders of certain user [ShowOrder](http://localhost:7000/orders/:userID) - (http://localhost:7000/orders/:userID)
+  - Return all the completed orders [ShowCompleteOrders](http://localhost:7000/orders/:orderStatus) - (http://localhost:7000/orders/:orderStatus)
+    
+ ### 3.Dependencies script:
+>>>>>>> 780dd476ce4a1ff5cf2f2ea4bddd1113e48254b7
 - Build the ts file: ("build": "npx tsc")
 - Run Eslint: ("lint": "eslint \"dist/\*_/_.js\"")
 - Run Prettier: ("prettier": "prettier --config .prettierrc \"dist/\*_/_.js\" --write")
